@@ -1,0 +1,25 @@
+<head>
+    <title>How To Disable Browser Back Button Using Javascript</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+
+<body>
+
+    <h3>Disable Browser Back Button Using Javascript</h3>
+
+    <button onclick="disableBackButton()">Click to Disable</button>
+
+    <span id="message" style="margin-top:10px;display:block;color:green;"></span>
+
+</body>
+
+<script type="text/javascript">
+    function disableBackButton() {
+
+        window.history.pushState(null, "", window.location.href);
+        window.onpopstate = function() {
+            window.history.pushState(null, "", window.location.href);
+        };
+
+        $("#message").text("Successfully!, Browser back button disabled").delay(2000).fadeOut(1000);
+    }
